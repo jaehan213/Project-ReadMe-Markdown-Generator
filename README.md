@@ -19,7 +19,7 @@ Professional README.md Generator
     
 
 ## Description <a name="description"></a>
-This applications allows the user to create an organized, professional README.md file from their terminal. Give it a try with one of your own projects.  
+This applications allows the user to create an organized, professional README.md file from their terminal. Give it a try with one of your own projects. This specific README.md file was generated with the applcation.  
     
 
 ## Installation <a name="installation"></a>
@@ -45,3 +45,5 @@ View the markdown file to see the result.
 ## Questions <a name="question"></a>
 Github @jaehan213 [Link](https://github.com/jaehan213)
 jaehan213@gmail.com
+
+Deployed Link: https://jaehan213.github.io/Project-ReadMe-Markdown-Generator/
