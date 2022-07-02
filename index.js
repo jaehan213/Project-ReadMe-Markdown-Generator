@@ -1,6 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+var badges = {"Mac OS":"https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0",
+"Windows":"https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white",
+"Linux":"https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black",
+"iOS":"https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white"}
+
 inquirer
   .prompt([
     {
@@ -37,7 +42,7 @@ inquirer
       type: 'checkbox',
       message: 'License(s):',
       name: 'license',
-      choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+      choices: ['Mac OS', 'Windows', 'Linux', 'iOS'],
     },
     {
       type: 'input',
@@ -56,6 +61,14 @@ inquirer
     let toc = `\n\n### Table of Contents`;
     let main = ``;
     let i = 1;
+    if(data.license.length > 0){
+      title = title.concat("\n");
+      for(let j = 0; j < data.license.length; j++){
+        let badge = data.license[j];
+        console.log(badges[badge])
+        title = title.concat(`![${badge}](${badges[badge]})\n`);
+      }
+    }
     if(data.description.length > 0){
       toc = toc.concat(`\r${i}. [Description](#description)`)
       main = main.concat(`\n\n## Description <a name="description"></a>
@@ -69,8 +82,8 @@ inquirer
       i++;
     }
     if(data.usage.length > 0){
-      toc = toc.concat(`\r${i}. [Usage Info](#usage)`)
-      main = main.concat(`\n\n## Usage Info<a name="usage"></a>
+      toc = toc.concat(`\r${i}. [Usage Information](#usage)`)
+      main = main.concat(`\n\n## Usage Information<a name="usage"></a>
       ${data.usage}`)
       i++;
     }
