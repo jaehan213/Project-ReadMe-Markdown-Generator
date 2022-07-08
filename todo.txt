@@ -1,3 +1,0 @@
-
-1. gitignore for node_modules file
-2. video
