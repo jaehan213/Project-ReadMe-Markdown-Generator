@@ -72,7 +72,7 @@ const badgeDescription = {
   "The zlib/libpng License": "https://opensource.org/licenses/Zlib"
 }
 
-// prompts the sections for input
+// prompts input from user and saves to variables
 inquirer
   .prompt([
     {
@@ -123,17 +123,18 @@ inquirer
     },
   ])
   .then((data) => {
-    // markdown file name
+    // create markdown file name
     const filename = `README_${data.title.toLowerCase().split(' ').join('_')}.md`;
 
     // title + main = main string from inputs
+    // will add to these strings in the following code
     let title = `# ${data.title}`;
-    let main = ``;
+    var main = ``;
 
+    // toc: string for table of contents section
     // i: table of content numbers
-    // toc: table of content string
-    let i = 1;
-    let toc = `\n\n### Table of Contents`;
+    var toc = `\n\n### Table of Contents`;
+    var i = 1;
 
     // if input in terminal is empty, skip section
     if(data.license.length > 0){
@@ -202,8 +203,10 @@ inquirer
       i++;
     }
 
-    // after each section is created from the inputs, add title, toc, and main for full string for markdown file
+    // after all sections are collapsed, add collapse strings to create final string
+    // string for final file = title + table of contents + main string
     let final = title + toc + main
+    
     // write to file
     fs.writeFile(filename, final, (err) =>
       err ? console.log(err) : console.log('Success!')
