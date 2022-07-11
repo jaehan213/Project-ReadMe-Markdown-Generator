@@ -72,6 +72,7 @@ const badgeDescription = {
   "The zlib/libpng License": "https://opensource.org/licenses/Zlib"
 }
 
+// prompts the sections for input
 inquirer
   .prompt([
     {
@@ -122,11 +123,19 @@ inquirer
     },
   ])
   .then((data) => {
+    // markdown file name
     const filename = `README_${data.title.toLowerCase().split(' ').join('_')}.md`;
+
+    // title + main = main string from inputs
     let title = `# ${data.title}`;
-    let toc = `\n\n### Table of Contents`;
     let main = ``;
+
+    // i: table of content numbers
+    // toc: table of content string
     let i = 1;
+    let toc = `\n\n### Table of Contents`;
+
+    // if input in terminal is empty, skip section
     if(data.license.length > 0){
       title = title.concat("\n");
       for(let j = 0; j < data.license.length; j++){
@@ -135,6 +144,8 @@ inquirer
     }
     if(data.description.length > 0){
       toc = toc.concat(`\r${i}. [Description](#description)`)
+      // if input in terminal is not empty, add section to table of contents
+      // and add section to main template
       main = main.concat(`\n\n## Description <a name="description"></a>
       ${data.description}`)
       i++;
@@ -190,7 +201,10 @@ inquirer
       main = main.concat(`\tEmail: ${data.email}\n`)
       i++;
     }
+
+    // after each section is created from the inputs, add title, toc, and main for full string for markdown file
     let final = title + toc + main
+    // write to file
     fs.writeFile(filename, final, (err) =>
       err ? console.log(err) : console.log('Success!')
     );
