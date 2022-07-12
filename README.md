@@ -23,7 +23,8 @@
       Download the files on Github and run `node index.js` in the terminal to begin the markdown generator.
 
 ## Usage Information<a name="usage"></a>
-      Check out the short walkthrough video for a demonstration of the app. This markdown file shows the basic template for the generated file.
+      Check out the short walkthrough video for a demonstration of the app. This markdown file shows the basic template for the generated file. 
+      https://drive.google.com/file/d/11nn-OMGgh65BXdJeHlkIcUuVTraniCDs/view
 
 ## License(s) <a name="license"></a>
 	Apache 2.0 License: https://opensource.org/licenses/Apache-2.0
